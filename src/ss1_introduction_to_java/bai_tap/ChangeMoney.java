@@ -1,4 +1,4 @@
-package ss1.bai_tap;
+package ss1_introduction_to_java.bai_tap;
 
 import java.util.Scanner;
 import java.text.NumberFormat;
