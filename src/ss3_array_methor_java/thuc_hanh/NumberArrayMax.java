@@ -2,7 +2,7 @@ package ss3_array_methor_java.thuc_hanh;
 
 import java.util.Scanner;
 
-public class NumberArray {
+public class NumberArrayMax {
     public static void main(String[] args) {
         int size;
         int[] array;
