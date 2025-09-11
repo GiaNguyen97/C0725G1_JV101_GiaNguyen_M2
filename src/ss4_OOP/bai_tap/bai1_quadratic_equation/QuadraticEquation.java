@@ -46,4 +46,5 @@ public class QuadraticEquation {
     public float getRoot2() {
         return (float) (-b - Math.sqrt(getDiscriminant()) / 2 * a);
     }
+
 }
