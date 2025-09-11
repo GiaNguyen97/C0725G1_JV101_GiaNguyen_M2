@@ -1,9 +1,9 @@
 package ss4_OOP.bai_tap.bai1_quadratic_equation;
 
 public class QuadraticEquation {
-    byte a;
-    byte b;
-    byte c;
+    private byte a;
+    private byte b;
+    private byte c;
 
     public QuadraticEquation(byte a, byte b, byte c) {
         this.a = a;
