@@ -38,9 +38,9 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
+                "id=" + id +
+                ", tên=" + name  +
+                ", giá=" + price +
                 '}';
     }
 }

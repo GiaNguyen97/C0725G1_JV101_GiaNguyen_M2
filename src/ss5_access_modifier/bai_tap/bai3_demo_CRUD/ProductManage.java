@@ -18,8 +18,7 @@ public class ProductManage {
         }
     }
 
-    public void edit(byte index, String id, String name, int price) {
-        listProduct[index].setId(id);
+    public void edit(byte index, String name, int price) {
         listProduct[index].setName(name);
         listProduct[index].setPrice(price);
     }
