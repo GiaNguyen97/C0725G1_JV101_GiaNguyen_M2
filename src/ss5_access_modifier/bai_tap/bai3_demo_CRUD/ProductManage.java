@@ -23,8 +23,8 @@ public class ProductManage {
         listProduct[index].setPrice(price);
     }
 
-    public void find() {
-
+    public void find(byte index) {
+        System.out.println(this.listProduct[index]);
     }
 
     public void delete(byte index) {

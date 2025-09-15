@@ -20,10 +20,12 @@ public class Menu {
                      2. Thêm sản phẩm\
                     
                      3. Sửa thông tin sản phẩm\
+                     
+                     4. Tìm kiếm sản phẩm\
                     
-                     4. Xóa sản phẩm\
+                     5. Xóa sản phẩm\
                     
-                     5. Thoát\
+                     6. Thoát\
                     
                      ----Lựa chọn chức năng---""");
             int choose = Integer.parseInt(scanner.nextLine());
@@ -96,6 +98,23 @@ public class Menu {
                     }
                     break;
                 case 4:
+                    System.out.println("Tìm kiếm sản phẩm");
+                    System.out.print("Nhập id sản phẩm cần tìm: ");
+                    String findId = scanner.nextLine();
+                    boolean foundFind = false;
+                    for (byte i = 0; i < productManage.listProduct.length; i++) {
+                        if (productManage.listProduct[i] != null &&
+                                productManage.listProduct[i].getId().equals(findId)) {
+                                productManage.find(i);
+                                foundFind = true;
+                            break;
+                        }
+                    }
+                    if (!foundFind) {
+                        System.out.println("Không tìm thấy sản phẩm với id: " + findId);
+                    }
+                    break;
+                case 5:
                     System.out.println("Xóa sản phẩm");
                     System.out.print("Nhập id cần xóa: ");
                     String idDelete = scanner.nextLine();
