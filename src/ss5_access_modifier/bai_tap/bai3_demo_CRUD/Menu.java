@@ -1,5 +1,8 @@
 package ss5_access_modifier.bai_tap.bai3_demo_CRUD;
 
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Menu {
@@ -81,8 +84,11 @@ public class Menu {
                             System.out.print("Nhập giá sửa :");
                             int editPrice = Integer.parseInt(scanner.nextLine());
                             System.out.println("Xác nhận sửa thông tin sản phẩm");
-                            System.out.print("từ" + productManage.listProduct[i]);
-                            System.out.println(" thành Product{ id =" + editId + ", tên= " + editName + ", giá= " + editPrice + "}");
+                            System.out.print("Từ " + productManage.listProduct[i]);
+                            Locale localeVN = new Locale("vi", "VN");
+                            NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(localeVN);
+                            currencyFormatter.setCurrency(Currency.getInstance("VND"));
+                            System.out.println(" thành Product{id =" + editId + ", tên= " + editName + ", giá= " + currencyFormatter.format(editPrice) + "}");
                             System.out.println("\n1.Có\n2.Không\n---------------");
                             byte comfirmEdit = Byte.parseByte(scanner.nextLine());
                             if (comfirmEdit == 1) {

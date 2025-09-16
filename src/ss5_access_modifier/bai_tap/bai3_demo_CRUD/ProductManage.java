@@ -4,8 +4,8 @@ public class ProductManage {
     public Product[] listProduct = new Product[100];
 
     {
-        this.add("1", "A", 10000);
-        this.add("2", "B", 20000);
+        this.add("1", "sản phẩm A", 100000);
+        this.add("2", "sản phẩm B", 200000);
     }
 
     public void add(String id, String name, int price) {

@@ -1,5 +1,10 @@
 package ss5_access_modifier.bai_tap.bai3_demo_CRUD;
 
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
+
+
 public class Product {
     private String id;
     private String name;
@@ -37,10 +42,15 @@ public class Product {
 
     @Override
     public String toString() {
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(localeVN);
+        currencyFormatter.setCurrency(Currency.getInstance("VND"));
+
+
         return "Product{" +
-                "id=" + id +
-                ", tên=" + name  +
-                ", giá=" + price +
+                "id= " + id +
+                ", tên= " + name  +
+                ", giá= " + currencyFormatter.format(price) +
                 '}';
     }
 }
