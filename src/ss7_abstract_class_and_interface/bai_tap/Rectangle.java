@@ -1,6 +1,6 @@
-package ss7_abstract_class_and_interface.bai_tap.bai1_interface_resizeable;
+package ss7_abstract_class_and_interface.bai_tap;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape implements IColorable{
     private double width = 1.0;
     private double length = 1.0;
 
@@ -54,7 +54,12 @@ public class Rectangle extends Shape {
 
     @Override
     public void resize(double percent) {
-        this.width *= percent+100;
-        this.length *= percent+100;
+        this.width *= percent/100+1;
+        this.length *= percent/100+1;
+    }
+
+    @Override
+    public void howToColor() {
+        System.out.println("Color all back sides");
     }
 }

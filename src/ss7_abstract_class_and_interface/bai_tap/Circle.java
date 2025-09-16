@@ -1,4 +1,4 @@
-package ss7_abstract_class_and_interface.bai_tap.bai1_interface_resizeable;
+package ss7_abstract_class_and_interface.bai_tap;
 
 public class Circle extends Shape {
     private double radius = 1.0;
@@ -40,6 +40,6 @@ public class Circle extends Shape {
     }
     @Override
     public void resize(double percent) {
-        this.radius *= percent+100;
+        this.radius *= percent/100+1;
     }
 }

@@ -1,4 +1,4 @@
-package ss7_abstract_class_and_interface.bai_tap.bai1_interface_resizeable;
+package ss7_abstract_class_and_interface.bai_tap;
 
 public  abstract class Shape implements IResizeable {
     private String color = "green";
