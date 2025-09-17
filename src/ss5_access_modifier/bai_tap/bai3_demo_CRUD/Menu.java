@@ -23,7 +23,7 @@ public class Menu {
                      2. Thêm sản phẩm\
                     
                      3. Sửa thông tin sản phẩm\
-                     
+                    
                      4. Tìm kiếm sản phẩm\
                     
                      5. Xóa sản phẩm\
@@ -111,8 +111,8 @@ public class Menu {
                     for (byte i = 0; i < productManage.listProduct.length; i++) {
                         if (productManage.listProduct[i] != null &&
                                 productManage.listProduct[i].getId().equals(findId)) {
-                                productManage.find(i);
-                                foundFind = true;
+                            productManage.find(i);
+                            foundFind = true;
                             break;
                         }
                     }
