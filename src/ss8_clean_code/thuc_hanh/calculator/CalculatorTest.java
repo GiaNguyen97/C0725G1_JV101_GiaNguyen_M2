@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 public class CalculatorTest {
     @Test
     @DisplayName("Testing addition")
@@ -21,11 +22,11 @@ public class CalculatorTest {
     @DisplayName("Testing subtraction")
     void testCalculateSub() {
         int firstOperand = 2;
-        int secondOperand  = 1;
-        char operator  = '-';
+        int secondOperand = 1;
+        char operator = '-';
         int expected = 1;
 
-        int result = Calculator.calculate(firstOperand, secondOperand , operator );
+        int result = Calculator.calculate(firstOperand, secondOperand, operator);
         assertEquals(expected, result);
     }
 
@@ -34,10 +35,10 @@ public class CalculatorTest {
     void testCalculateMul() {
         int firstOperand = 2;
         int secondOperand = 2;
-        char operator  = '*';
+        char operator = '*';
         int expected = 4;
 
-        int result = Calculator.calculate(firstOperand, secondOperand , operator );
+        int result = Calculator.calculate(firstOperand, secondOperand, operator);
         assertEquals(expected, result);
     }
 
@@ -46,10 +47,10 @@ public class CalculatorTest {
     void testCalculateDiv() {
         int firstOperand = 6;
         int secondOperand = 3;
-        char operator  = '/';
+        char operator = '/';
         int expected = 2;
 
-        int result = Calculator.calculate(firstOperand, secondOperand , operator );
+        int result = Calculator.calculate(firstOperand, secondOperand, operator);
         assertEquals(expected, result);
     }
 
@@ -58,10 +59,12 @@ public class CalculatorTest {
     void testCalculateDivByZero() {
         int firstOperand = 2;
         int secondOperand = 0;
-        char operator  = '/';
+        char operator = '/';
 
         assertThrows(RuntimeException.class,
-                ()-> {Calculator.calculate(firstOperand, secondOperand, operator );});
+                () -> {
+                    Calculator.calculate(firstOperand, secondOperand, operator);
+                });
     }
 
     @Test
@@ -72,6 +75,8 @@ public class CalculatorTest {
         char operator = '=';
 
         assertThrows(RuntimeException.class,
-                ()-> {Calculator.calculate(firstOperand, secondOperand, operator);});
+                () -> {
+                    Calculator.calculate(firstOperand, secondOperand, operator);
+                });
     }
 }
