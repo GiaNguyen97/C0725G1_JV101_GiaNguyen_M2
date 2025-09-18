@@ -34,7 +34,7 @@ public class MotobikeView {
     }
 
     public static Motorbike inputDataForMotorbike() {
-        System.out.println("Thêm mới xe ô tô");
+        System.out.println("Thêm mới xe máy");
         String vehiclePlate;
         while (true) {
             System.out.print("Nhập biển số xe: ");
@@ -65,7 +65,7 @@ public class MotobikeView {
         short manufacturingDateOfVehicle = Short.parseShort(scanner.nextLine());
         System.out.print("Nhập tên chủ sở hữu: ");
         String vehicleOwner = scanner.nextLine();
-        System.out.print("Nhập kiểu xe: ");
+        System.out.print("Nhập công suất: ");
         short enginePowerofMotobike = Short.parseShort(scanner.nextLine());
         return new Motorbike(vehiclePlate,manufacturerOfVehicle,manufacturingDateOfVehicle,vehicleOwner,enginePowerofMotobike);
     }

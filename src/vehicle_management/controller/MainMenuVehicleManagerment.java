@@ -52,11 +52,11 @@ public class MainMenuVehicleManagerment {
                     System.out.print("Nhập biển số xe cần tìm: ");
                     String vehiclePlateFind = scanner.nextLine();
                     if (Pattern.matches(TRUCK_REGEX, vehiclePlateFind)) {
-                        truckManager.editByVehiclePlate(vehiclePlateFind);
+                        System.out.println(truckManager.findByVehiclePlate(vehiclePlateFind));
                     } else if (Pattern.matches(CAR_REGEX, vehiclePlateFind)) {
-                        carManager.editByVehiclePlate(vehiclePlateFind);
+                        System.out.println(carManager.findByVehiclePlate(vehiclePlateFind));
                     } else if (Pattern.matches(MOTORBIKE_REGEX, vehiclePlateFind)) {
-                        motobikeManager.editByVehiclePlate(vehiclePlateFind);
+                        System.out.println(motobikeManager.findByVehiclePlate(vehiclePlateFind));
                     } else {
                         System.out.println("Biển số " + vehiclePlateFind + " sai định dạng hệ thống.");
                     }
@@ -66,11 +66,11 @@ public class MainMenuVehicleManagerment {
                     System.out.print("Nhập biển số xe cần xóa: ");
                     String vehiclePlateDelete = scanner.nextLine();
                     if (Pattern.matches(TRUCK_REGEX, vehiclePlateDelete)) {
-                        truckManager.editByVehiclePlate(vehiclePlateDelete);
+                        truckManager.deleteByVehiclePlate(vehiclePlateDelete);
                     } else if (Pattern.matches(CAR_REGEX, vehiclePlateDelete)) {
-                        carManager.editByVehiclePlate(vehiclePlateDelete);
+                        carManager.deleteByVehiclePlate(vehiclePlateDelete);
                     } else if (Pattern.matches(MOTORBIKE_REGEX, vehiclePlateDelete)) {
-                        motobikeManager.editByVehiclePlate(vehiclePlateDelete);
+                        motobikeManager.deleteByVehiclePlate(vehiclePlateDelete);
                     } else {
                         System.out.println("Biển số " + vehiclePlateDelete + " sai định dạng hệ thống.");
                     }

@@ -57,15 +57,17 @@ public class MotobikeRepository implements IMotobikeRepository {
 
     @Override
     public boolean checkVehiclePlate(String vehiclePlate) {
-        boolean ischeckVehiclePlate = false;
+        if (vehiclePlate == null) {
+            return false;
+        }
         for (Motorbike motorbike : motorbikes) {
-            if (motorbike.getVehiclePlate().equals(vehiclePlate)) {
-                ischeckVehiclePlate = true;
-                break;
+            if (motorbike != null && vehiclePlate.equals(motorbike.getVehiclePlate())) {
+                return true;
             }
         }
-        return ischeckVehiclePlate;
+        return false;
     }
+
 
     @Override
     public void deleteByVehiclePlate(String vehiclePlate) {

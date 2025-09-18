@@ -1,6 +1,7 @@
 package vehicle_management.repository;
 
 
+import vehicle_management.entity.Motorbike;
 import vehicle_management.entity.Truck;
 
 import java.util.Scanner;
@@ -56,14 +57,15 @@ public class TruckRepository implements ITruckRepository {
 
     @Override
     public boolean checkVehiclePlate(String vehiclePlate) {
-        boolean ischeckVehiclePlate = false;
+        if (vehiclePlate == null) {
+            return false;
+        }
         for (Truck truck : trucks) {
-            if (truck.getVehiclePlate().equals(vehiclePlate)) {
-                ischeckVehiclePlate = true;
-                break;
+            if (truck != null && vehiclePlate.equals(truck.getVehiclePlate())) {
+                return true;
             }
         }
-        return ischeckVehiclePlate;
+        return false;
     }
 
     @Override

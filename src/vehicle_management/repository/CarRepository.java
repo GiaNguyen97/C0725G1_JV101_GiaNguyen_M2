@@ -1,6 +1,7 @@
 package vehicle_management.repository;
 
 import vehicle_management.entity.Car;
+import vehicle_management.entity.Motorbike;
 
 import java.util.Scanner;
 
@@ -62,14 +63,15 @@ public class CarRepository implements ICarRepository {
 
     @Override
     public boolean checkVehiclePlate(String vehiclePlate) {
-        boolean ischeckVehiclePlate = false;
+        if (vehiclePlate == null) {
+            return false;
+        }
         for (Car car : cars) {
-            if (car.getVehiclePlate().equals(vehiclePlate)) {
-                ischeckVehiclePlate = true;
-                break;
+            if (car != null && vehiclePlate.equals(car.getVehiclePlate())) {
+                return true;
             }
         }
-        return ischeckVehiclePlate;
+        return false;
     }
 
     @Override

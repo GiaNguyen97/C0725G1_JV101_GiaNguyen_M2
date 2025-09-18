@@ -35,7 +35,7 @@ public class TruckView {
     }
 
     public static Truck inputDataForTruck() {
-        System.out.println("Thêm mới xe ô tô");
+        System.out.println("Thêm mới xe tải");
         String vehiclePlate;
         while (true) {
             System.out.print("Nhập biển số xe: ");
@@ -65,7 +65,7 @@ public class TruckView {
         short manufacturingDateOfVehicle = Short.parseShort(scanner.nextLine());
         System.out.print("Nhập tên chủ sở hữu: ");
         String vehicleOwner = scanner.nextLine();
-        System.out.print("Nhập kiểu xe: ");
+        System.out.print("Nhập trọng tải: ");
         short grossTruckWeight = Short.parseShort(scanner.nextLine());
         return new Truck(vehiclePlate, manufacturerOfVehicle, manufacturingDateOfVehicle, vehicleOwner, grossTruckWeight);
     }
