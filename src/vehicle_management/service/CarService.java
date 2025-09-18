@@ -5,7 +5,7 @@ import vehicle_management.repository.CarRepository;
 import vehicle_management.repository.ICarRepository;
 
 public class CarService implements ICarService {
-    private ICarRepository carRepository = new CarRepository();
+    private final ICarRepository carRepository = new CarRepository();
 
     @Override
     public void add(Car car) {
@@ -18,17 +18,22 @@ public class CarService implements ICarService {
     }
 
     @Override
-    public void edit(String vehiclePlate) {
-
+    public void editByVehiclePlate(String vehiclePlate) {
+        carRepository.editByVehiclePlate(vehiclePlate);
     }
 
     @Override
-    public void find(String vehiclePlate) {
-
+    public Car findByVehiclePlate(String vehiclePlate) {
+        return carRepository.findByVehiclePlate(vehiclePlate);
     }
 
     @Override
-    public boolean deleteByVehiclePlate(String vehiclePlate) {
-        return false;
+    public boolean checkVehiclePlate(String vehiclePlate) {
+        return carRepository.checkVehiclePlate(vehiclePlate);
+    }
+
+    @Override
+    public void deleteByVehiclePlate(String vehiclePlate) {
+       carRepository.deleteByVehiclePlate(vehiclePlate);
     }
 }

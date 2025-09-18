@@ -1,7 +1,5 @@
 package vehicle_management.entity;
 
-import java.util.Date;
-
 public class Car extends Vehicle {
     private byte numberOfSeats;
     private String typeOfCar;

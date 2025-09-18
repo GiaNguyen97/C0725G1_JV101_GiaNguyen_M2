@@ -1,7 +1,5 @@
 package vehicle_management.entity;
 
-import java.util.Date;
-
 public abstract class Vehicle {
     private String vehiclePlate;
     private String manufacturerOfVehicle;

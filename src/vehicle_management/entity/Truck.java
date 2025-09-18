@@ -1,7 +1,5 @@
 package vehicle_management.entity;
 
-import java.util.Date;
-
 public class Truck extends Vehicle {
     private short grossTruckWeight;
 

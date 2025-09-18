@@ -3,18 +3,16 @@ package vehicle_management.controller;
 import vehicle_management.entity.Car;
 import vehicle_management.entity.Motorbike;
 import vehicle_management.entity.Truck;
-import vehicle_management.service.*;
 import vehicle_management.view.CarView;
 import vehicle_management.view.MotobikeView;
 import vehicle_management.view.TruckView;
-
 import java.util.Scanner;
+import static vehicle_management.controller.MainMenuVehicleManagerment.truckManager;
+import static vehicle_management.controller.MainMenuVehicleManagerment.carManager;
+import static vehicle_management.controller.MainMenuVehicleManagerment.motobikeManager;
 
 
 public class AddMenu {
-    private static ICarService carManager = new CarService();
-    private static ITruckService truckManager = new TruckService();
-    private static IMotobikeService motobikeManager = new MotobikeService();
 
     public static void showMenu() {
         Scanner scanner = new Scanner(System.in);

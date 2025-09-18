@@ -7,9 +7,11 @@ public interface ITruckService {
 
     Truck[] findAll();
 
-    void edit(String vehiclePlate);
+    void editByVehiclePlate(String vehiclePlate);
 
-    void find(String vehiclePlate);
+    Truck findByVehiclePlate(String vehiclePlate);
 
-    boolean deleteByVehiclePlate(String vehiclePlate);
+    boolean checkVehiclePlate(String vehiclePlate);
+
+    void deleteByVehiclePlate(String vehiclePlate);
 }

@@ -5,10 +5,11 @@ import vehicle_management.repository.ITruckRepository;
 import vehicle_management.repository.TruckRepository;
 
 public class TruckService implements ITruckService {
-    private ITruckRepository truckRepository = new TruckRepository();
+    private final ITruckRepository truckRepository = new TruckRepository();
+
     @Override
     public void add(Truck truck) {
-truckRepository.add(truck);
+        truckRepository.add(truck);
     }
 
     @Override
@@ -17,17 +18,22 @@ truckRepository.add(truck);
     }
 
     @Override
-    public void edit(String vehiclePlate) {
-
+    public void editByVehiclePlate(String vehiclePlate) {
+        truckRepository.editByVehiclePlate(vehiclePlate);
     }
 
     @Override
-    public void find(String vehiclePlate) {
-
+    public Truck findByVehiclePlate(String vehiclePlate) {
+        return truckRepository.findByVehiclePlate(vehiclePlate);
     }
 
     @Override
-    public boolean deleteByVehiclePlate(String vehiclePlate) {
-        return false;
+    public boolean checkVehiclePlate(String vehiclePlate) {
+        return truckRepository.checkVehiclePlate(vehiclePlate);
+    }
+
+    @Override
+    public void deleteByVehiclePlate(String vehiclePlate) {
+        truckRepository.deleteByVehiclePlate(vehiclePlate);
     }
 }
