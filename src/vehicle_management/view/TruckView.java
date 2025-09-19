@@ -6,7 +6,7 @@ import vehicle_management.entity.Truck;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import static vehicle_management.controller.MainMenuVehicleManagerment.*;
+import static vehicle_management.controller.VehicleController.*;
 
 public class TruckView {
     private static final Scanner scanner = new Scanner(System.in);

@@ -46,13 +46,12 @@ public class TruckRepository implements ITruckRepository {
 
     @Override
     public Truck findByVehiclePlate(String vehiclePlate) {
-        byte i;
-        for (i = 0; i < trucks.length; i++) {
-            if (trucks[i].getVehiclePlate().equals(vehiclePlate)) {
-                break;
+        for (Truck truck : trucks) {
+            if (truck != null && truck.getVehiclePlate().equals(vehiclePlate)) {
+                return truck;
             }
         }
-        return trucks[i];
+        return null;
     }
 
     @Override
@@ -70,21 +69,14 @@ public class TruckRepository implements ITruckRepository {
 
     @Override
     public void deleteByVehiclePlate(String vehiclePlate) {
-        for (byte i=0; i<trucks.length; i++) {
-            if (trucks[i].getVehiclePlate().equals(vehiclePlate)) {
-                for (byte j = i; j<trucks.length; j++){
-                    boolean isNoNull = true;
-                    if (trucks[i+1]!=null) {
-                        trucks[i].setManufacturerOfVehicle(trucks[i+1].getManufacturerOfVehicle());
-                        trucks[i].setGrossTruckWeight(trucks[i+1].getGrossTruckWeight());
-                        trucks[i].setVehicleOwner(trucks[i+1].getVehicleOwner());
-                        trucks[i].setManufacturerOfVehicle(trucks[i+1].getManufacturerOfVehicle());
-                    } else {
-                        trucks[i] = null;
-                        isNoNull = false;
-                    }
-                    if (isNoNull) {
-                        trucks[trucks.length-1] = null;
+        for (int i = 0; i < trucks.length; i++) {
+            if (trucks[i] != null && trucks[i].getVehiclePlate().equals(vehiclePlate)) {
+
+                for (int j = i; j < trucks.length - 1; j++) {
+                    if (trucks[j+1] != null) {
+                        trucks[j] = trucks[j + 1];} else {
+                        trucks[j]=null;
+                        break;
                     }
                 }
                 break;

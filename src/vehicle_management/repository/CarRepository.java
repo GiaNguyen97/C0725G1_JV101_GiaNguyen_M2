@@ -1,7 +1,7 @@
 package vehicle_management.repository;
 
 import vehicle_management.entity.Car;
-import vehicle_management.entity.Motorbike;
+
 
 import java.util.Scanner;
 
@@ -39,26 +39,30 @@ public class CarRepository implements ICarRepository {
 
         for (Car car : cars) {
             if (car.getVehiclePlate().equals(vehiclePlate)) {
-                car.setManufacturerOfVehicle(manufacturerOfVehicle);
-                car.setManufacturingDateOfVehicle(manufacturingDateOfVehicle);
-                car.setVehicleOwner(vehicleOwner);
-                car.setNumberOfSeats(numberOfSeats);
-                car.setTypeOfCar(typeOfCar);
-                break;
+                System.out.println("Sửa "+ car + "thành " + new Car(vehiclePlate,manufacturerOfVehicle,manufacturingDateOfVehicle,vehicleOwner,numberOfSeats,typeOfCar));
+                if (confirm()) {
+                    car.setManufacturerOfVehicle(manufacturerOfVehicle);
+                    car.setManufacturingDateOfVehicle(manufacturingDateOfVehicle);
+                    car.setVehicleOwner(vehicleOwner);
+                    car.setNumberOfSeats(numberOfSeats);
+                    car.setTypeOfCar(typeOfCar);
+                    break;
+                } else {
+                    break;
+                }
+
             }
         }
-
     }
 
     @Override
     public Car findByVehiclePlate(String vehiclePlate) {
-        byte i;
-        for (i = 0; i < cars.length; i++) {
-            if (cars[i].getVehiclePlate().equals(vehiclePlate)) {
-                break;
+        for (Car car : cars) {
+            if (car != null && car.getVehiclePlate().equals(vehiclePlate)) {
+                return car;
             }
         }
-        return cars[i];
+        return null;
     }
 
     @Override
@@ -76,22 +80,14 @@ public class CarRepository implements ICarRepository {
 
     @Override
     public void deleteByVehiclePlate(String vehiclePlate) {
-        for (byte i=0; i<cars.length; i++) {
-            if (cars[i].getVehiclePlate().equals(vehiclePlate)) {
-                for (byte j = i; j<cars.length; j++){
-                    boolean isNoNull = true;
-                    if (cars[i+1]!=null) {
-                        cars[i].setManufacturerOfVehicle(cars[i+1].getManufacturerOfVehicle());
-                        cars[i].setTypeOfCar(cars[i+1].getTypeOfCar());
-                        cars[i].setVehicleOwner(cars[i+1].getVehicleOwner());
-                        cars[i].setNumberOfSeats(cars[i+1].getNumberOfSeats());
-                        cars[i].setManufacturerOfVehicle(cars[i+1].getManufacturerOfVehicle());
-                    } else {
-                        cars[i] = null;
-                        isNoNull = false;
-                    }
-                    if (isNoNull) {
-                        cars[cars.length-1] = null;
+        for (int i = 0; i < cars.length; i++) {
+            if (cars[i] != null && cars[i].getVehiclePlate().equals(vehiclePlate)) {
+
+                for (int j = i; j < cars.length - 1; j++) {
+                    if (cars[j+1] != null) {
+                    cars[j] = cars[j + 1];} else {
+                        cars[j]=null;
+                        break;
                     }
                 }
                 break;
@@ -108,6 +104,13 @@ public class CarRepository implements ICarRepository {
             }
         }
 
+    }
+
+    public boolean confirm () {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Xác nhận thực hiện thao tác này: 1.Có 2.Không");
+        byte choice = Byte.parseByte(scanner.nextLine());
+        return choice == 1;
     }
 
 }

@@ -1,9 +1,9 @@
-package vehicle_management.view;
+package vehicle_management;
 
-import vehicle_management.controller.MainMenuVehicleManagerment;
+import vehicle_management.controller.VehicleController;
 
-public class MainApp {
+public class RunApp {
     public static void main(String[] args) {
-        MainMenuVehicleManagerment.showMenu();
+        VehicleController.showMenu();
     }
 }

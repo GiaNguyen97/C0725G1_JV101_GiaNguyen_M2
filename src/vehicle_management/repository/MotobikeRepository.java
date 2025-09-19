@@ -1,6 +1,7 @@
 package vehicle_management.repository;
 
 
+import vehicle_management.entity.Car;
 import vehicle_management.entity.Motorbike;
 
 import java.util.Scanner;
@@ -46,13 +47,12 @@ public class MotobikeRepository implements IMotobikeRepository {
 
     @Override
     public Motorbike findByVehiclePlate(String vehiclePlate) {
-        byte i;
-        for (i = 0; i < motorbikes.length; i++) {
-            if (motorbikes[i].getVehiclePlate().equals(vehiclePlate)) {
-                break;
+        for (Motorbike motorbike : motorbikes) {
+            if (motorbike != null && motorbike.getVehiclePlate().equals(vehiclePlate)) {
+                return motorbike;
             }
         }
-        return motorbikes[i];
+        return null;
     }
 
     @Override
@@ -71,21 +71,14 @@ public class MotobikeRepository implements IMotobikeRepository {
 
     @Override
     public void deleteByVehiclePlate(String vehiclePlate) {
-        for (byte i=0; i<motorbikes.length; i++) {
-            if (motorbikes[i].getVehiclePlate().equals(vehiclePlate)) {
-                for (byte j = i; j<motorbikes.length; j++){
-                    boolean isNoNull = true;
-                    if (motorbikes[i+1]!=null) {
-                        motorbikes[i].setManufacturerOfVehicle(motorbikes[i+1].getManufacturerOfVehicle());
-                        motorbikes[i].setEnginePowerofMotobike(motorbikes[i+1].getEnginePowerofMotobike());
-                        motorbikes[i].setVehicleOwner(motorbikes[i+1].getVehicleOwner());
-                        motorbikes[i].setManufacturerOfVehicle(motorbikes[i+1].getManufacturerOfVehicle());
-                    } else {
-                        motorbikes[i] = null;
-                        isNoNull = false;
-                    }
-                    if (isNoNull) {
-                        motorbikes[motorbikes.length-1] = null;
+        for (int i = 0; i < motorbikes.length; i++) {
+            if (motorbikes[i] != null && motorbikes[i].getVehiclePlate().equals(vehiclePlate)) {
+
+                for (int j = i; j < motorbikes.length - 1; j++) {
+                    if (motorbikes[j+1] != null) {
+                        motorbikes[j] = motorbikes[j + 1];} else {
+                        motorbikes[j]=null;
+                        break;
                     }
                 }
                 break;

@@ -11,7 +11,7 @@ import vehicle_management.view.TruckView;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class MainMenuVehicleManagerment {
+public class VehicleController {
     public static final String TRUCK_REGEX = "^\\d{2}C-\\d{3}\\.\\d{2}$";
     public static final String CAR_REGEX = "^\\d{2}[AB]-\\d{3}\\.\\d{2}$";
     public static final String MOTORBIKE_REGEX = "^\\d{2}-[A-Z][A-Z0-9]-\\d{3}\\.\\d{2}$";
