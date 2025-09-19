@@ -1,21 +1,23 @@
-package vehicle_management.repository;
+package ss10_DSA_list.bai_tap.vehicle_management_ArrayList.repository;
 
+import ss10_DSA_list.bai_tap.vehicle_management_ArrayList.entity.Truck;
 
-import vehicle_management.entity.Motorbike;
-import vehicle_management.entity.Truck;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TruckRepository implements ITruckRepository {
-    private static final Truck[] trucks = new Truck[100];
+
+    private static final List<Truck> trucks = new ArrayList<>();
 
     static {
-        trucks[0] = new Truck("43C-012.34", "Huyndai", (short) 2019, "Nguyễn Văn A", (short) 3);
-        trucks[1] = new Truck("43C-476.78", "Dongfeng", (short) 2020, "Nguyễn Văn B", (short) 9);
-        trucks[2] = new Truck("43C-452.35", "Hino", (short) 2021, "Nguyễn Văn C", (short) 12);
+        trucks.add(new Truck("43C-012.34", "Huyndai", (short) 2019, "Nguyễn Văn A", (short) 3));
+        trucks.add(new Truck("43C-476.78", "Dongfeng", (short) 2020, "Nguyễn Văn B", (short) 9));
+        trucks.add(new Truck("43C-452.35", "Hino", (short) 2021, "Nguyễn Văn C", (short) 12));
     }
 
-    public Truck[] findAll() {
+    @Override
+    public List<Truck> findAll() {
         return trucks;
     }
 
@@ -28,32 +30,30 @@ public class TruckRepository implements ITruckRepository {
         short manufacturingDateOfVehicle = Short.parseShort(scanner.nextLine());
         System.out.print("Nhập tên chủ sở hữu: ");
         String vehicleOwner = scanner.nextLine();
-        System.out.print("Nhập công suất: ");
+        System.out.print("Nhập tải trọng (tấn): ");
         short grossTruckWeight = Short.parseShort(scanner.nextLine());
 
-
         for (Truck truck : trucks) {
-            if (truck != null && truck.getVehiclePlate().equals(vehiclePlate)) {
-                System.out.println("Sửa " + truck + " thành " + new Truck(vehiclePlate, manufacturerOfVehicle, manufacturingDateOfVehicle, vehicleOwner, grossTruckWeight));
+            if (truck.getVehiclePlate().equals(vehiclePlate)) {
+                System.out.println("Sửa " + truck + " thành " +
+                        new Truck(vehiclePlate, manufacturerOfVehicle, manufacturingDateOfVehicle, vehicleOwner, grossTruckWeight));
                 if (confirm()) {
                     truck.setManufacturerOfVehicle(manufacturerOfVehicle);
                     truck.setManufacturingDateOfVehicle(manufacturingDateOfVehicle);
                     truck.setVehicleOwner(vehicleOwner);
                     truck.setGrossTruckWeight(grossTruckWeight);
                     System.out.println("Đã sửa thành công!");
-                    break;
-                } else {
-                    break;
                 }
+                return;
             }
         }
-
+        System.out.println("Không tìm thấy xe tải có biển số: " + vehiclePlate);
     }
 
     @Override
     public Truck findByVehiclePlate(String vehiclePlate) {
         for (Truck truck : trucks) {
-            if (truck != null && truck.getVehiclePlate().equals(vehiclePlate)) {
+            if (truck.getVehiclePlate().equals(vehiclePlate)) {
                 return truck;
             }
         }
@@ -66,7 +66,7 @@ public class TruckRepository implements ITruckRepository {
             return false;
         }
         for (Truck truck : trucks) {
-            if (truck != null && vehiclePlate.equals(truck.getVehiclePlate())) {
+            if (vehiclePlate.equals(truck.getVehiclePlate())) {
                 return true;
             }
         }
@@ -75,39 +75,27 @@ public class TruckRepository implements ITruckRepository {
 
     @Override
     public void deleteByVehiclePlate(String vehiclePlate) {
-        for (int i = 0; i < trucks.length; i++) {
-            if (trucks[i] != null && trucks[i].getVehiclePlate().equals(vehiclePlate)) {
-
-                System.out.println("Xóa " + trucks[i]);
+        for (Truck truck : trucks) {
+            if (truck.getVehiclePlate().equals(vehiclePlate)) {
+                System.out.println("Xóa " + truck);
                 if (confirm()) {
-                    for (int j = i; j < trucks.length - 1; j++) {
-                        if (trucks[j + 1] != null) {
-                            trucks[j] = trucks[j + 1];
-                        } else {
-                            trucks[j] = null;
-                            break;
-                        }
-                    }
-                    System.out.println("Đã xóa " + trucks[i] + "thành công!");
+                    trucks.remove(truck);
+                    System.out.println("Đã xóa " + truck + " thành công!");
                 }
-                break;
+                return;
             }
         }
+        System.out.println("Không tìm thấy xe tải có biển số: " + vehiclePlate);
     }
 
     @Override
     public void add(Truck truck) {
-        for (int i = 0; i < trucks.length; i++) {
-            if (trucks[i] == null) {
-                trucks[i] = truck;
-                break;
-            }
-        }
+        trucks.add(truck);
     }
 
     public boolean confirm() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Xác nhận thực hiện thao tác này: 1.Có 2.Không");
+        System.out.println("Xác nhận thực hiện thao tác này: 1.Có  2.Không");
         byte choice = Byte.parseByte(scanner.nextLine());
         return choice == 1;
     }

@@ -1,13 +1,14 @@
-package vehicle_management.controller;
+package ss10_DSA_list.bai_tap.vehicle_management_ArrayList.controller;
 
-import vehicle_management.entity.Car;
-import vehicle_management.entity.Motorbike;
-import vehicle_management.entity.Truck;
-import vehicle_management.service.*;
-import vehicle_management.view.CarView;
-import vehicle_management.view.MotobikeView;
-import vehicle_management.view.TruckView;
+import ss10_DSA_list.bai_tap.vehicle_management_ArrayList.entity.Car;
+import ss10_DSA_list.bai_tap.vehicle_management_ArrayList.entity.Motorbike;
+import ss10_DSA_list.bai_tap.vehicle_management_ArrayList.entity.Truck;
+import ss10_DSA_list.bai_tap.vehicle_management_ArrayList.service.*;
+import ss10_DSA_list.bai_tap.vehicle_management_ArrayList.view.CarView;
+import ss10_DSA_list.bai_tap.vehicle_management_ArrayList.view.MotobikeView;
+import ss10_DSA_list.bai_tap.vehicle_management_ArrayList.view.TruckView;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -136,17 +137,17 @@ public class VehicleController {
             switch (choose) {
                 case 1:
                     System.out.println("Danh sách xe tải");
-                    Truck[] trucks = truckManager.findAll();
+                    List<Truck> trucks = truckManager.findAll();
                     TruckView.showListTruck(trucks);
                     break;
                 case 2:
                     System.out.println("Danh sách xe ô tô");
-                    Car[] cars = carManager.findAll();
+                    List<Car> cars = carManager.findAll();
                     CarView.showListCar(cars);
                     break;
                 case 3:
                     System.out.println("Danh sách xe máy");
-                    Motorbike[] motorbikes = motobikeManager.findAll();
+                    List<Motorbike> motorbikes = motobikeManager.findAll();
                     MotobikeView.showListMotorbike(motorbikes);
                     break;
                 default:

@@ -1,22 +1,22 @@
-package vehicle_management.repository;
+package ss10_DSA_list.bai_tap.vehicle_management_ArrayList.repository;
 
+import ss10_DSA_list.bai_tap.vehicle_management_ArrayList.entity.Motorbike;
 
-import vehicle_management.entity.Car;
-import vehicle_management.entity.Motorbike;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MotobikeRepository implements IMotobikeRepository {
-    private static final Motorbike[] motorbikes = new Motorbike[100];
+    private static final List<Motorbike> motorbikes = new ArrayList<>();
 
     static {
-        motorbikes[0] = new Motorbike("43-K1-678.56", "Yamaha", (short) 2019, "Nguyễn Văn A", (short) 100);
-        motorbikes[1] = new Motorbike("43-H1-345.89", "Honda", (short) 2019, "Nguyễn Văn B", (short) 150);
-        motorbikes[2] = new Motorbike("43-AK-765.23", "Yamaha", (short) 2019, "Nguyễn Văn C", (short) 50);
+        motorbikes.add(new Motorbike("43-K1-678.56", "Yamaha", (short) 2019, "Nguyễn Văn A", (short) 100));
+        motorbikes.add(new Motorbike("43-H1-345.89", "Honda", (short) 2019, "Nguyễn Văn B", (short) 150));
+        motorbikes.add(new Motorbike("43-AK-765.23", "Yamaha", (short) 2019, "Nguyễn Văn C", (short) 50));
     }
 
     @Override
-    public Motorbike[] findAll() {
+    public List<Motorbike> findAll() {
         return motorbikes;
     }
 
@@ -32,29 +32,27 @@ public class MotobikeRepository implements IMotobikeRepository {
         System.out.print("Nhập công suất: ");
         short enginePowerofMotobike = Short.parseShort(scanner.nextLine());
 
-
         for (Motorbike motorbike : motorbikes) {
-            if (motorbike != null && motorbike.getVehiclePlate().equals(vehiclePlate)) {
-                System.out.println("Sửa " + motorbike + " thành " + new Motorbike(vehiclePlate, manufacturerOfVehicle, manufacturingDateOfVehicle, vehicleOwner, enginePowerofMotobike));
+            if (motorbike.getVehiclePlate().equals(vehiclePlate)) {
+                System.out.println("Sửa " + motorbike + " thành " +
+                        new Motorbike(vehiclePlate, manufacturerOfVehicle,
+                                manufacturingDateOfVehicle, vehicleOwner, enginePowerofMotobike));
                 if (confirm()) {
                     motorbike.setManufacturerOfVehicle(manufacturerOfVehicle);
                     motorbike.setManufacturingDateOfVehicle(manufacturingDateOfVehicle);
                     motorbike.setVehicleOwner(vehicleOwner);
                     motorbike.setEnginePowerofMotobike(enginePowerofMotobike);
                     System.out.println("Đã sửa thành công!");
-                    break;
-                } else {
-                    break;
                 }
+                break;
             }
         }
-
     }
 
     @Override
     public Motorbike findByVehiclePlate(String vehiclePlate) {
         for (Motorbike motorbike : motorbikes) {
-            if (motorbike != null && motorbike.getVehiclePlate().equals(vehiclePlate)) {
+            if (motorbike.getVehiclePlate().equals(vehiclePlate)) {
                 return motorbike;
             }
         }
@@ -63,33 +61,23 @@ public class MotobikeRepository implements IMotobikeRepository {
 
     @Override
     public boolean checkVehiclePlate(String vehiclePlate) {
-        if (vehiclePlate == null) {
-            return false;
-        }
+        if (vehiclePlate == null) return false;
         for (Motorbike motorbike : motorbikes) {
-            if (motorbike != null && vehiclePlate.equals(motorbike.getVehiclePlate())) {
+            if (vehiclePlate.equals(motorbike.getVehiclePlate())) {
                 return true;
             }
         }
         return false;
     }
 
-
     @Override
     public void deleteByVehiclePlate(String vehiclePlate) {
-        for (int i = 0; i < motorbikes.length; i++) {
-            if (motorbikes[i] != null && motorbikes[i].getVehiclePlate().equals(vehiclePlate)) {
-                System.out.println("Xóa " + motorbikes[i]);
+        for (int i = 0; i < motorbikes.size(); i++) {
+            if (motorbikes.get(i).getVehiclePlate().equals(vehiclePlate)) {
+                System.out.println("Xóa " + motorbikes.get(i));
                 if (confirm()) {
-                    for (int j = i; j < motorbikes.length - 1; j++) {
-                        if (motorbikes[j + 1] != null) {
-                            motorbikes[j] = motorbikes[j + 1];
-                        } else {
-                            motorbikes[j] = null;
-                            break;
-                        }
-                    }
-                    System.out.println("Đã xóa " + motorbikes[i] + "thành công!");
+                    motorbikes.remove(i);
+                    System.out.println("Đã xóa thành công!");
                 }
                 break;
             }
@@ -98,12 +86,7 @@ public class MotobikeRepository implements IMotobikeRepository {
 
     @Override
     public void add(Motorbike motorbike) {
-        for (int i = 0; i < motorbikes.length; i++) {
-            if (motorbikes[i] == null) {
-                motorbikes[i] = motorbike;
-                break;
-            }
-        }
+        motorbikes.add(motorbike);
     }
 
     public boolean confirm() {
