@@ -1,6 +1,12 @@
 package vehicle_management.controller;
 
+import vehicle_management.entity.Car;
+import vehicle_management.entity.Motorbike;
+import vehicle_management.entity.Truck;
 import vehicle_management.service.*;
+import vehicle_management.view.CarView;
+import vehicle_management.view.MotobikeView;
+import vehicle_management.view.TruckView;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -28,10 +34,10 @@ public class MainMenuVehicleManagerment {
             int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
-                    AddMenu.showMenu();
+                    addMenu();
                     break;
                 case 2:
-                    DisplayMenu.showMenu();
+                    displayMenu();
                     break;
                 case 3:
                     System.out.println("Sửa thông tin phương tiện");
@@ -82,5 +88,72 @@ public class MainMenuVehicleManagerment {
         }
 
     }
+    public static void addMenu() {
+        Scanner scanner = new Scanner(System.in);
+        boolean flag = true;
+        while (flag) {
+            System.out.println("=== Thêm mới phương tiện ===" +
+                    "\n 1. Thêm xe tải" +
+                    "\n 2. Thêm ôtô" +
+                    "\n 3. Thêm xe máy" +
+                    "\n 4. Quay lại");
+            System.out.print("Chọn chức năng: ");
+            int choose = Integer.parseInt(scanner.nextLine());
+            switch (choose) {
+                case 1:
+                    Truck truck = TruckView.inputDataForTruck();
+                    truckManager.add(truck);
+                    System.out.println("Thêm mới thành công");
+                    break;
+                case 2:
+                    Car car = CarView.inputDataForCar();
+                    carManager.add(car);
+                    System.out.println("Thêm mới thành công");
+                    break;
+                case 3:
+                    Motorbike motobike = MotobikeView.inputDataForMotorbike();
+                    motobikeManager.add(motobike);
+                    System.out.println("Thêm mới thành công");
+                    break;
+                default:
+                    flag = false;
+                    break;
+            }
+        }
 
+    }
+    public static void displayMenu() {
+        Scanner scanner = new Scanner(System.in);
+        boolean flag = true;
+        while (flag) {
+            System.out.println("=== Hiển thị phương tiện ===" +
+                    "\n 1. Hiển thị xe tải" +
+                    "\n 2. Hiển thị ôtô" +
+                    "\n 3. Hiển thị xe máy" +
+                    "\n 4. Quay lại");
+            System.out.print("Chọn chức năng: ");
+            int choose = Integer.parseInt(scanner.nextLine());
+            switch (choose) {
+                case 1:
+                    System.out.println("Danh sách xe tải");
+                    Truck[] trucks = truckManager.findAll();
+                    TruckView.showListTruck(trucks);
+                    break;
+                case 2:
+                    System.out.println("Danh sách xe ô tô");
+                    Car[] cars = carManager.findAll();
+                    CarView.showListCar(cars);
+                    break;
+                case 3:
+                    System.out.println("Danh sách xe máy");
+                    Motorbike[] motorbikes = motobikeManager.findAll();
+                    MotobikeView.showListMotorbike(motorbikes);
+                    break;
+                default:
+                    flag = false;
+                    break;
+            }
+        }
+
+    }
 }
