@@ -3,7 +3,7 @@ package ss11_DSA_Stack_Queue.bai_tap;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class reverse_by_Stack {
+public class ReverseByStack {
     public static void main(String[] args) {
         Stack <Integer> integerStack = new Stack<>();
         int[] arrays = {1,2,3,4,5};
