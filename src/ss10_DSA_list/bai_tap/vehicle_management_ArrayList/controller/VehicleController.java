@@ -89,7 +89,7 @@ public class VehicleController {
         }
 
     }
-    public static void addMenu() {
+    private static void addMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
         while (flag) {
@@ -123,7 +123,7 @@ public class VehicleController {
         }
 
     }
-    public static void displayMenu() {
+    private static void displayMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
         while (flag) {
