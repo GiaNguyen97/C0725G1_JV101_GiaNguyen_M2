@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ProductManager {
     private List<Product> listProduct = new ArrayList<>();
+
     {
         this.add("1", "sản phẩm A", 100000);
         this.add("2", "sản phẩm B", 200000);

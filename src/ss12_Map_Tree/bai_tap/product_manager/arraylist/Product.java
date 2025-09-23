@@ -49,7 +49,7 @@ public class Product {
 
         return "Product{" +
                 "id= " + id +
-                ", tên= " + name  +
+                ", tên= " + name +
                 ", giá= " + currencyFormatter.format(price) +
                 '}';
     }
