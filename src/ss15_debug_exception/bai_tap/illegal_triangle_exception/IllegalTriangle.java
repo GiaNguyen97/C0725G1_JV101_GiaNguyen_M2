@@ -19,18 +19,21 @@ public class IllegalTriangle {
                 bTriangle = Integer.parseInt(scanner.nextLine());
                 System.out.print("Nhập độ dài cạnh c: ");
                 cTriangle = Integer.parseInt(scanner.nextLine());
-                exits =false;
+                exits = false;
             } catch (NumberFormatException e) {
-                System.out.println("Lỗi nhập chữ, vui lòng nhập lại");
+                System.err.println("Lỗi nhập chữ, vui lòng nhập lại");
+                System.out.println(" ");
+
             }
         } while (exits);
         Triangle triangle = null;
         try {
             triangle = new Triangle(aTriangle, bTriangle, cTriangle);
+            System.out.println(triangle);
         } catch (IllegalTriangleException e) {
-            throw new RuntimeException(e);
+            System.err.println(e.getMessage());
         }
 
-        System.out.println(triangle);
+
     }
 }
