@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductManager {
-    private List<Product> listProduct = new ArrayList<>();
+    private final List<Product> listProduct = new ArrayList<>();
 
     {
         this.add("1", "sản phẩm A", 100000);
@@ -15,17 +15,22 @@ public class ProductManager {
         listProduct.add(new Product(id, name, price));
     }
 
-    public void edit(byte index, String name, int price) {
+    public void edit(int index, String name, int price) {
         listProduct.get(index).setName(name);
         listProduct.get(index).setPrice(price);
     }
 
-    public void find(byte index) {
-        System.out.println(this.listProduct.get(index));
+    public Product find(int index) {
+        if (index >= 0 && index < listProduct.size()) {
+            return listProduct.get(index);
+        }
+        return null;
     }
 
-    public void delete(byte index) {
-        listProduct.remove(index);
+    public void delete(int index) {
+        if (index >= 0 && index < listProduct.size()) {
+            listProduct.remove(index);
+        }
     }
 
     public void displayAll() {
