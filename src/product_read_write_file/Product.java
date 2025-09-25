@@ -53,4 +53,8 @@ public class Product {
                 ", giá= " + currencyFormatter.format(price) +
                 '}';
     }
+
+    public String getInfoToSCV() {
+        return this.getId()+","+this.getName()+","+this.getPrice();
+    }
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWriteFile {
-    // method write
+
     public static void writeListStringToCSV(String filePatch, List<String> list,boolean append) throws IOException {
         File file = new File(filePatch);
         FileWriter fileWriter = new FileWriter(file,append);

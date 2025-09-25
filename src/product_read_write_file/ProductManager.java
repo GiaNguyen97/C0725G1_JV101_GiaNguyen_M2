@@ -11,21 +11,34 @@ public class ProductManager {
 
 
 
-    public void add(String id, String name, int price) {
-        List<Product> productList = new ArrayList<>();
-        productList.add(new Product(id, name, price));
-        ReadAndWriteFile.writeListStringToCSV(FILE_PATH, productList);
+    public boolean add(Product product) {
+        List<String> stringList = new ArrayList<>();
+        stringList.add(product.getInfoToSCV());
+        try {
+            ReadAndWriteFile.writeListStringToCSV(FILE_PATH, stringList, true);
+        } catch (IOException e) {
+            System.out.println("lỗi đọc file");
+        }
+        return true;
     }
 
     public void edit(int index, String name, int price) {
-        List<Product> productList = new ArrayList<>();
+        List<Product> productList = displayAll();
         productList.get(index).setName(name);
         productList.get(index).setPrice(price);
-        ReadAndWriteFile.writeListStringToCSV(FILE_PATH, productList);
+        List<String> strings = new ArrayList<>();
+        for (Product product : productList) {
+            strings.add(product.getInfoToSCV());
+        }
+        try {
+            ReadAndWriteFile.writeListStringToCSV(FILE_PATH, strings, false);
+        } catch (IOException e) {
+            System.out.println("lỗi đọc file");
+        }
     }
 
     public Product find(int index) {
-        List<Product> productList = new ArrayList<>();
+        List<Product> productList = displayAll();
         if (index >= 0 && index < productList.size()) {
             return productList.get(index);
         }
@@ -33,7 +46,7 @@ public class ProductManager {
     }
 
     public List<Product> find(List<Integer> listIndex) {
-        List<Product> productList = new ArrayList<>();
+        List<Product> productList = displayAll();
         List<Product> products = new ArrayList<>();
         for (int index : listIndex) {
             if (index >= 0 && index < productList.size()) {
@@ -44,14 +57,22 @@ public class ProductManager {
     }
 
     public void delete(List<Integer> listIndex) {
-        List<Product> productList = new ArrayList<>();
+        List<Product> productList = displayAll();
         listIndex.sort(Collections.reverseOrder());
         for (int index : listIndex) {
             if (index >= 0 && index < productList.size()) {
                 productList.remove(index);
             }
         }
-        ReadAndWriteFile.writeListStringToCSV(FILE_PATH, productList);
+        List<String> strings = new ArrayList<>();
+        for (Product product : productList) {
+            strings.add(product.getInfoToSCV());
+        }
+        try {
+            ReadAndWriteFile.writeListStringToCSV(FILE_PATH, strings, false);
+        } catch (IOException e) {
+            System.out.println("lỗi đọc file");
+        }
     }
 
     public List<Product> displayAll() {
@@ -72,7 +93,7 @@ public class ProductManager {
     }
 
     public List<Integer> findIndexByInfor(Object value, String infor){
-        List<Product> productList = new ArrayList<>();
+        List<Product> productList = displayAll();
         List<Integer> listIndex = new ArrayList<>();
         for (int i = 0; i < productList.size(); i++) {
             Product p = productList.get(i);

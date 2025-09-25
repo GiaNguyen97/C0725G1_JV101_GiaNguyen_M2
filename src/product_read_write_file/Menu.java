@@ -46,7 +46,7 @@ public class Menu {
                     String name = scanner.nextLine();
                     System.out.print("Nhập giá: ");
                     int price = Integer.parseInt(scanner.nextLine());
-                    productManager.add(id, name, price);
+                    productManager.add(new Product(id, name, price));
                     System.out.println("Đã thêm sản phẩm thành công!");
                 }
                 case 3 -> {
