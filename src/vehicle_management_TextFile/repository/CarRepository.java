@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CarRepository implements ICarRepository {
-    private static final String FILE_PATH = "E:\\CODEGYM\\bai_tap_code_gym\\module_2\\untitled\\src\\vehicle_management_TextFile\\list_car.csv";
+    private static final String FILE_PATH = "E:\\CODEGYM\\bai_tap_code_gym\\module_2\\untitled\\src\\vehicle_management_TextFile\\data\\list_car.csv";
 
     @Override
     public List<Car> findAll() {

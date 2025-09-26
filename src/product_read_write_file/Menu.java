@@ -1,6 +1,9 @@
 package product_read_write_file;
 
+import java.text.NumberFormat;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Menu {
@@ -29,9 +32,21 @@ public class Menu {
             switch (choose) {
                 case 1 -> {
                     System.out.println("-------Danh sách sản phẩm------");
-                    List <Product> products = productManager.displayAll();
+                    List<Product> products = productManager.displayAll();
+
+                    // In tiêu đề dạng bảng
+                    System.out.printf("%-10s %-20s %-10s%n", "ID", "Tên", "Giá");
+                    System.out.println("----------------------------------------");
+
+                    // In từng sản phẩm
                     for (Product product : products) {
-                        System.out.println(product);
+                        Locale localeVN = new Locale("vi", "VN");
+                        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(localeVN);
+                        currencyFormatter.setCurrency(Currency.getInstance("VND"));
+                        System.out.printf("%-10s %-20s %-20s%n",
+                                product.getId(),
+                                product.getName(),
+                                currencyFormatter.format(product.getPrice()));
                     }
                 }
                 case 2 -> {
