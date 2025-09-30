@@ -1,0 +1,1 @@
+Số byte trong file là: 310 byte
