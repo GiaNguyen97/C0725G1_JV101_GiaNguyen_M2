@@ -5,8 +5,8 @@ public class Test {
 
     public static void main(String[] args) {
         CheckNameClass checkNameClass = new CheckNameClass();
-        for (String string : vailNameClass){
-            System.out.println(string+": "+checkNameClass.isValidateNameClass(string));
+        for (String nameClass : vailNameClass){
+            System.out.println(nameClass+": "+checkNameClass.isValidateNameClass(nameClass));
         }
     }
 }
