@@ -8,7 +8,7 @@ import java.net.URL;
 public class CrawlNews {
     public static void main(String[] args) {
         try {
-            URL url = new URL("https://dantri.com.vn/the-gioi.htm");
+            URL url = new URL("https://dantri.com.vn/");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
 
