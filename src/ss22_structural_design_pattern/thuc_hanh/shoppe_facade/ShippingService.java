@@ -1,4 +1,4 @@
-package ss22_structural_design_pattern.thuc_hanh.shoppe;
+package ss22_structural_design_pattern.thuc_hanh.shoppe_facade;
 
 class ShippingService {
     void arrangeDelivery() {
