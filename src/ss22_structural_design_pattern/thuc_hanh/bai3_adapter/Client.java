@@ -1,4 +1,4 @@
-package ss22_structural_design_pattern.thuc_hanh.file_worker;
+package ss22_structural_design_pattern.thuc_hanh.bai3_adapter;
 
 public class Client {
     private FileCalculator fileCalculator;
